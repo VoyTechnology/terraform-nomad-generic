@@ -43,6 +43,7 @@ variable "image" {
 variable "args" {
   type        = list(string)
   description = "Arguments to execute"
+  default     = []
 }
 
 variable "env" {
