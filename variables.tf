@@ -56,13 +56,11 @@ variable "ports" {
   type = map(object({
     static       = number
     to           = number
-    host_network = string
   }))
   default = {
     "http" = {
       static       = 0
       to           = 0
-      host_network = ""
     }
   }
   description = "Mapping of port name to port object"
@@ -86,6 +84,7 @@ variable "constraints" {
     operator  = string
     value     = string
   }))
+  default = []
   description = "Constraints of the job"
 }
 
