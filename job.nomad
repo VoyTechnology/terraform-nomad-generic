@@ -18,7 +18,6 @@ job "${job_name}" {
       port "${port}" {
         static = ${info.static}
         to     = ${info.to}
-	host_network = "${info.host_network}"
       }
       %{ endfor }
       mode = "${network_mode}"
