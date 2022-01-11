@@ -45,14 +45,14 @@ job "${job_name}" {
         memory = "${memory}"
       }
 
-      %{ for tmpl in template_files }
+      %{ for dest, values in template_files }
       template {
+        destination   = "${dest}"
+        change_mode   = ${jsonencode(lookup(values, "mode", "restart"))}
+        change_signal = ${jsonencode(lookup(values, "signal", ""))}
         data = <<EOF
-${tmpl.data}
-EOF
-        destination = "${tmpl.destination}"
-        change_mode = "${tmpl.change_mode}"
-        change_signal = "${tmpl.change_signal}"
+${values.data}
+        EOF
       }
       %{ endfor }
     }

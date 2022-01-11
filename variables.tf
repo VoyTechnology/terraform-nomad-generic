@@ -60,23 +60,23 @@ variable "ports" {
   }))
   default = {
     "http" = {
-      static       = 0
-      to           = 0
+      static = 0
+      to     = 0
     }
   }
   description = "Mapping of port name to port object"
 }
 
 variable "cpu" {
-  type = number
+  type        = number
   description = "Number of Mhz assigned"
-  default = 50
+  default     = 50
 }
 
 variable "memory" {
-  type = number
+  type        = number
   description = "Memory in MB"
-  default = 50
+  default     = 50
 }
 
 variable "constraints" {
@@ -85,47 +85,42 @@ variable "constraints" {
     operator  = string
     value     = string
   }))
-  default = []
+  default     = []
   description = "Constraints of the job"
 }
 
 variable "service_port" {
-  type = string
+  type        = string
   description = "Service port name, must be one declared in ports"
 }
 
 variable "service_tags" {
-  type = list(string)
+  type        = list(string)
   description = "Tags of the service"
-  default = []
+  default     = []
 }
 
 variable "template_files" {
-  type = list(object({
-    data = string
-    destination = string
-    change_mode = string
-    change_signal = string
-  }))
-  description = "Template files to be rendered"
-  default = []
+  type        = map(map(string))
+  description = "Template Files for the job, With the key being destination, and data, mode and signal in the value map"
+  default     = {}
 }
 
 
 variable "volumes" {
-  type = list(string)
+  type        = list(string)
   description = "Volumes to be mounted"
-  default = []
+  default     = []
 }
 
 variable "network_mode" {
-  type = string
+  type        = string
   description = "Network mode"
-  default = "host"
+  default     = "host"
 }
 
 variable "docker_network_mode" {
-  type = string
+  type        = string
   description = "Docker config network mode"
-  default = ""
+  default     = ""
 }
