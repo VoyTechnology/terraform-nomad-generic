@@ -34,6 +34,9 @@ locals {
         template_files = var.template_files,
         volumes      = jsonencode(var.volumes)
         network_mode = var.network_mode,
+
         docker_network_mode = var.docker_network_mode,
+        docker_username         = var.docker_username
+        docker_password         = var.docker_password
     })
 }

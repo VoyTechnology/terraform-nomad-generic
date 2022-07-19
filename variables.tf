@@ -124,3 +124,17 @@ variable "docker_network_mode" {
   description = "Docker config network mode"
   default     = ""
 }
+
+variable "docker_username" {
+  type        = string
+  description = "Docker Auth Username"
+  default     = ""
+  sensitive   = true
+}
+
+variable "docker_password" {
+  type        = string
+  description = "Docker Auth Password"
+  default     = ""
+  sensitive   = true
+}

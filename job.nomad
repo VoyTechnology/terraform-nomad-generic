@@ -38,6 +38,11 @@ job "${job_name}" {
         )}
         volumes = ${volumes}
         network_mode = "${docker_network_mode}"
+
+        auth {
+          username = "${docker_username}"
+          password = "${docker_password}"
+        }
       }
 
       resources {
@@ -57,4 +62,4 @@ ${values.data}
       %{ endfor }
     }
   }
-} 
+}
