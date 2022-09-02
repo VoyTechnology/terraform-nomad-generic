@@ -45,6 +45,12 @@ job "${job_name}" {
         }
       }
 
+      env {
+        %{ for key, value in env}
+        ${key} = "${value}"
+        %{ endfor }
+      }
+
       resources {
         cpu    = "${cpu}"
         memory = "${memory}"
