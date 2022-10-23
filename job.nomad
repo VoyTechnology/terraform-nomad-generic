@@ -23,10 +23,12 @@ job "${job_name}" {
       mode = "${network_mode}"
     }
 
+    %{ for port, tags in service_tags}
     service {
-      port = "${service_port}"
-      tags = ${service_tags}
+      port = "${port}"
+      tags = ${jsonencode(tags)}
     }
+    %{ endfor }
 
     task "${job_name}" {
       driver = "docker"

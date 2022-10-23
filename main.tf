@@ -13,30 +13,29 @@
 # limitations under the License.
 
 resource "nomad_job" "job" {
-    jobspec = local.jobspec
+  jobspec = local.jobspec
 }
 
 locals {
-    jobspec = templatefile("${path.module}/job.nomad", {
-        job_name     = var.job_name,
-        datacenters  = jsonencode(var.datacenters),
-        region       = var.region,
-        namespace    = var.namespace,
-        constraints  = var.constraints,
-        image        = var.image,
-        args         = jsonencode(var.args),
-        env          = var.env,
-        ports        = var.ports,
-        cpu          = var.cpu,
-        memory       = var.memory,
-        service_port = var.service_port,
-        service_tags = jsonencode(var.service_tags),
-        template_files = var.template_files,
-        volumes      = jsonencode(var.volumes)
-        network_mode = var.network_mode,
+  jobspec = templatefile("${path.module}/job.nomad", {
+    job_name       = var.job_name,
+    datacenters    = jsonencode(var.datacenters),
+    region         = var.region,
+    namespace      = var.namespace,
+    constraints    = var.constraints,
+    image          = var.image,
+    args           = jsonencode(var.args),
+    env            = var.env,
+    ports          = var.ports,
+    cpu            = var.cpu,
+    memory         = var.memory,
+    service_tags   = var.service_tags,
+    template_files = var.template_files,
+    volumes        = jsonencode(var.volumes)
+    network_mode   = var.network_mode,
 
-        docker_network_mode = var.docker_network_mode,
-        docker_username         = var.docker_username
-        docker_password         = var.docker_password
-    })
+    docker_network_mode = var.docker_network_mode,
+    docker_username     = var.docker_username
+    docker_password     = var.docker_password
+  })
 }

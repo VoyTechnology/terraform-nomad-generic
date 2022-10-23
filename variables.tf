@@ -55,8 +55,8 @@ variable "env" {
 variable "ports" {
   # Mapping of port name to "static" or "to" properties
   type = map(object({
-    static       = number
-    to           = number
+    static = number
+    to     = number
   }))
   default = {
     "http" = {
@@ -89,15 +89,10 @@ variable "constraints" {
   description = "Constraints of the job"
 }
 
-variable "service_port" {
-  type        = string
-  description = "Service port name, must be one declared in ports"
-}
-
 variable "service_tags" {
-  type        = list(string)
-  description = "Tags of the service"
-  default     = []
+  type        = map(list(string))
+  description = "Tags of the service for individual port declared in ports"
+  default     = {}
 }
 
 variable "template_files" {
